@@ -11,7 +11,7 @@
 function views_photo_grid_views_api() {
   return array(
     'api' => 3,
-    'path' => drupal_get_path('module', 'views_photo_grid') .'/views',
+    'path' => backdrop_get_path('module', 'views_photo_grid') . '/views',
   );
 }
 
@@ -33,9 +33,18 @@ function template_preprocess_views_photo_grid_style(&$vars) {
     }
   }
 
-  $module_dir = drupal_get_path('module', 'views_photo_grid');
-  drupal_add_css($module_dir . '/css/views-photo-grid.css');
-  drupal_add_js(array('viewsPhotoGrid' => array('gridPadding' => $handler->options['grid_padding'])), 'setting');
-  drupal_add_js($module_dir . '/js/views-photo-grid.js');
+  $module_dir = backdrop_get_path('module', 'views_photo_grid');
+  backdrop_add_css($module_dir . '/css/views-photo-grid.css');
+  backdrop_add_js(array('viewsPhotoGrid' => array('gridPadding' => $handler->options['grid_padding'])), 'setting');
+  backdrop_add_js($module_dir . '/js/views-photo-grid.js');
 
+}
+
+/**
+ * Implements hook_autoload_info().
+ */
+function views_photo_grid_autoload_info() {
+  return array(
+    'views_photo_grid_plugin_style' => 'views/views_photo_grid_plugin_style.inc',
+  );
 }
