@@ -57,7 +57,7 @@ class views_photo_grid_plugin_style extends views_plugin_style {
   function validate() {
     $errors = parent::validate();
 
-    if (!is_numeric($this->view->vid)) {
+    if (!is_numeric($this->view->name)) {
       // Skip validation when the view is being created.
       // (the default field is a title field, which would fail.)
       return $errors;
